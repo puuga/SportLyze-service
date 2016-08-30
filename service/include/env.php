@@ -1,8 +1,8 @@
 <?php
 $db_server = "localhost";
-$db_username = "evyalert";
-$db_password = "IdGSZ5zRa9AuNDUH";
-$db_dbname = "evyalert";
+$db_username = "sportlyze";
+$db_password = "RyclREO0NMXTAvw|O1234";
+$db_dbname = "sportlyze";
 
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);

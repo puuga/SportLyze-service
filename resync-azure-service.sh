@@ -14,7 +14,7 @@ ssh -q $sshhostname quit
 
 # Sync files
 #rsync --verbose --delete --archive -z --exclude .vagrant/ --exclude vendor --exclude app/storage --exclude storage/app --exclude .svn --exclude .env --exclude public/res -e ssh evybook-service/ $sshhostname:/var/www/html/evybook-service/
-rsync --verbose --delete --archive -z --exclude .DS_Store -a -e "ssh" --rsync-path="sudo rsync" service/ $sshhostname:/var/www/html/evyalert-service/
+rsync --verbose --delete --archive -z --exclude .DS_Store -a -e "ssh" --rsync-path="sudo rsync" service/ $sshhostname:/var/www/html/sportlyze-service/
 
 # Run composer install
 # ssh $sshhostname "sudo chmod -R 777 /var/www/app/storage ; cd /var/www ; sudo composer install"
