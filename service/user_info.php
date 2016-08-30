@@ -16,6 +16,7 @@ if( isset($_GET["firebase_id"]) ) {
     echo json_encode($user);
     $conn->close();
     exit();
+  }
 }
 
 // id
@@ -27,6 +28,7 @@ if( isset($_GET["id"]) ) {
     echo json_encode($user);
     $conn->close();
     exit();
+  }
 }
 
 http_response_code(204);
