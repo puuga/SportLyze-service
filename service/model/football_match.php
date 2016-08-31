@@ -78,4 +78,13 @@ function updateVideo($conn, $post_data) {
   }
 
 }
+
+function deleteMatch($conn, $match_id) {
+  $sql = "DELETE FROM football_matchs WHERE id=$match_id";
+  if ($conn->query($sql) === TRUE) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
 ?>
