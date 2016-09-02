@@ -1,6 +1,6 @@
 <?php
 function getFootballPlayersByCreaterId($conn, $id): array {
-  $sql = "SELECT * FROM football_players WHERE created_by_user=$id";
+  $sql = "SELECT * FROM football_players_with_age WHERE created_by_user=$id";
   $resutls = [];
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
@@ -14,7 +14,7 @@ function getFootballPlayersByCreaterId($conn, $id): array {
 }
 
 function getFootballPlayerById($conn, $id) {
-  $sql = "SELECT * FROM football_players WHERE id=$id";
+  $sql = "SELECT * FROM football_players_with_age WHERE id=$id";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     // output data of each row
@@ -33,13 +33,15 @@ function addPlayer($conn, $post_data) {
             last_name,
             position,
             memo,
+            birthday,
             created_at, updated_at)
           VALUES (
             '$post_data->user_id',
             '$post_data->first_name',
             '$post_data->last_name',
             '1',
-            '$post_data->memo', 
+            '$post_data->memo',
+            '$post_data->birthday',
             NOW(), NOW())";
   if ($conn->query($sql) === TRUE) {
     $last_id = $conn->insert_id;

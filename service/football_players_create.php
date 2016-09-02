@@ -10,6 +10,7 @@ $conn = connect_db($db_server, $db_username, $db_password, $db_dbname);
 $post_data->user_id = $_POST["user_id"];
 $post_data->first_name = $_POST["first_name"];
 $post_data->last_name = $_POST["last_name"];
+$post_data->birthday = $_POST["birthday"];
 $post_data->memo = $_POST["memo"];
 
 $player = addPlayer($conn, $post_data);
