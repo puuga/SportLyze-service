@@ -11,6 +11,7 @@ $post_data->user_id = $_POST["user_id"];
 $post_data->first_name = $_POST["first_name"];
 $post_data->last_name = $_POST["last_name"];
 $post_data->birthday = $_POST["birthday"];
+$post_data->position = $_POST["position"];
 $post_data->memo = $_POST["memo"];
 
 $player = addPlayer($conn, $post_data);
