@@ -1,6 +1,6 @@
 <?php
 function getFootballEvents($conn): array {
-  $sql = "SELECT * FROM football_events";
+  $sql = "SELECT * FROM football_events_renamed";
   $resutls = [];
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
