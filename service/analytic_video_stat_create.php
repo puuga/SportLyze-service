@@ -1,7 +1,6 @@
 <?php
 include "include/db_connect_oo.php";
 
-include "model/football_event.php";
 ?>
 <?php
 function addVideoStatsToMySQL($conn, $sql) {
@@ -9,6 +8,7 @@ function addVideoStatsToMySQL($conn, $sql) {
     $last_id = $conn->insert_id;
     return true;
   } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
     return false;
   }
 }
@@ -24,16 +24,28 @@ $video_stats = json_decode($inputJSON, TRUE);
 
 if (isset($video_stats)) {
   $sql = "INSERT INTO analytic_video_stats
-          (video_id, team_id, x, y, color, number, time_stamp, raw, created_at, updated_at)
+          (video_id, video_source, match_id, match_name,
+            team_id, team_name, x, y,
+            color, number, time_stamp, raw,
+            created_at, updated_at)
           VALUES ";
   foreach ($video_stats['video_stats'] as $video_stat) {
+    $video_id = $video_stat['video_id'];
+    $video_source = $video_stat['video_source'];
+    $match_id = $video_stat['match_id'];
+    $match_name = $video_stat['match_name'];
+    $team_id = $video_stat['team_id'];
+    $team_name = $video_stat['team_name'];
     $x = $video_stat['x'];
     $y = $video_stat['y'];
     $color = $video_stat['color'];
     $number = $video_stat['number'];
     $time_stamp = $video_stat['time_stamp'];
     $raw = json_encode($video_stat);
-    $sql .= "('0','0','$x','$y','$color','$number','$time_stamp','$raw',NOW(),NOW()),";
+    $sql .= "('$video_id','$video_source','$match_id','$match_name',
+            '$team_id','$team_name','$x','$y',
+            '$color','$number','$time_stamp','$raw',
+            NOW(),NOW()),";
   }
   $sql = rtrim($sql, ",");
 
