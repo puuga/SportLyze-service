@@ -36,16 +36,17 @@ if (isset($_GET["video_id"])) {
   if ( isset($mysql_result) ) {
     http_response_code(201);
     header('Content-Type: application/json');
+    header("Access-Control-Allow-Origin: *");
     echo json_encode($mysql_result);
     $conn->close();
     exit();
   }
-  echo json_encode("sql");
+  header("Access-Control-Allow-Origin: *");
   http_response_code(500);
   $conn->close();
   exit();
 }
-echo json_encode("param");
+header("Access-Control-Allow-Origin: *");
 http_response_code(500);
 $conn->close();
 exit();

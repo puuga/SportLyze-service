@@ -53,13 +53,16 @@ if (isset($video_stats)) {
   if ( $mysql_result ) {
     http_response_code(201);
     header('Content-Type: application/json');
+    header("Access-Control-Allow-Origin: *");
     $conn->close();
     exit();
   }
+  header("Access-Control-Allow-Origin: *");
   http_response_code(500);
   $conn->close();
   exit();
 }
+header("Access-Control-Allow-Origin: *");
 http_response_code(500);
 $conn->close();
 exit();
